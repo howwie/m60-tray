@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M60 volume</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main id="card">
+    <p id="status" aria-live="polite">Starting...</p>
+    <section id="media" aria-label="Media">
+      <div class="np" aria-live="polite">
+        <p id="np-title" class="muted">Not connected</p>
+        <p id="np-artist"></p>
+      </div>
+      <div class="media-buttons" role="group" aria-label="Media controls">
+        <button id="prev" type="button" class="media" data-action="5" aria-label="Previous track" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
+        </button>
+        <button id="play" type="button" class="media" data-action="0" aria-label="Play" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button id="pause" type="button" class="media" data-action="1" aria-label="Pause" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <button id="next" type="button" class="media" data-action="4" aria-label="Next track" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </section>
+    <div class="row">
+      <button id="down" type="button" aria-label="Volume down" disabled>&minus;</button>
+      <div class="track" id="track">
+        <input id="slider" type="range" min="0" max="16" step="1" value="0" aria-label="Volume" disabled>
+        <output id="bubble" for="slider" aria-hidden="true">0</output>
+      </div>
+      <button id="up" type="button" aria-label="Volume up" disabled>+</button>
+    </div>
+    <p id="detail"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

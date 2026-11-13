@@ -1,0 +1,13 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The volume popup, the EQ editor and the settings window may call the app's commands and listen for its events.",
+  "windows": [
+    "popup",
+    "eq",
+    "settings"
+  ],
+  "permissions": [
+    "core:default"
+  ]
+}

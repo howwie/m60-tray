@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- macOS stops an app that uses Bluetooth without this text -->
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>M60 Tray uses Bluetooth to control your Edifier M60 speakers (volume, input, EQ and lighting).</string>
+    <!-- menu-bar app: no Dock icon -->
+    <key>LSUIElement</key>
+    <true/>
+</dict>
+</plist>

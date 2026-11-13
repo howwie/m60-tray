@@ -1,0 +1,6 @@
+/target
+/dist
+/crates/m60-tray/gen
+node_modules/
+*.log
+.DS_Store

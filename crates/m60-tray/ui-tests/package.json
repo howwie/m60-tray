@@ -1,0 +1,12 @@
+{
+  "name": "m60-tray-ui-tests",
+  "private": true,
+  "description": "Behaviour tests for the volume popup, the custom EQ editor and the settings window",
+  "scripts": {
+    "setup": "playwright install chromium",
+    "test": "node popup.test.js && node eq.test.js && node settings.test.js"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

@@ -1,0 +1,31 @@
+/* Colours shared by the popup and the EQ editor; dark values follow the system setting. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1b1d21;
+  --muted: #6a7078;
+  --track: #dfe3e8;
+  --accent: #1877f2;
+  --accent-fg: #ffffff;
+  --button: #eef0f3;
+  --button-hover: #e1e5ea;
+  --focus: #1877f2;
+  --danger: #c62828;
+  --border: #e3e6ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #25282d;
+    --fg: #f1f3f5;
+    --muted: #9aa1aa;
+    --track: #3b4047;
+    --accent: #4c9aff;
+    --accent-fg: #0b1220;
+    --button: #343840;
+    --button-hover: #40454e;
+    --focus: #4c9aff;
+    --danger: #ff6b6b;
+    --border: #3a3f46;
+  }
+}

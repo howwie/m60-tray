@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom EQ presets</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="eq.css">
+</head>
+<body>
+  <header>
+    <h1>Custom EQ presets</h1>
+    <p id="connection" aria-live="polite">Checking the speaker...</p>
+  </header>
+  <div class="layout">
+    <aside>
+      <ul id="list" aria-label="Saved presets"></ul>
+      <button id="new" type="button" class="ghost">+ New preset</button>
+    </aside>
+    <section class="editor" aria-label="Preset editor">
+      <label class="name">
+        <span>Name</span>
+        <input id="name" type="text" autocomplete="off" spellcheck="false" placeholder="e.g. Late night">
+      </label>
+      <div class="bands">
+        <div class="scale" aria-hidden="true"><span>+3 dB</span><span>0</span><span>-3 dB</span></div>
+        <div id="bands" class="band-row"></div>
+      </div>
+      <div class="actions">
+        <button id="flat" type="button" class="ghost">Flat</button>
+        <button id="delete" type="button" class="ghost danger">Delete</button>
+        <button id="discard" type="button" class="ghost" hidden>Discard changes</button>
+        <span class="spacer"></span>
+        <button id="save" type="button">Save</button>
+        <button id="apply" type="button" class="primary">Save and apply</button>
+      </div>
+      <p id="message" role="status"></p>
+    </section>
+  </div>
+  <script src="eq.js"></script>
+</body>
+</html>
