@@ -156,8 +156,13 @@ pub fn render_styled(volume: Option<u8>, connected: bool, style: Style) -> Vec<u
 mod tests {
     use super::*;
 
+    /// The RGBA pixels of a rendered icon.
+    fn pixels(px: &[u8]) -> &[[u8; 4]] {
+        px.as_chunks::<4>().0
+    }
+
     fn white(px: &[u8]) -> usize {
-        px.chunks_exact(4).filter(|p| p == &[255, 255, 255, 255]).count()
+        pixels(px).iter().filter(|p| **p == [255, 255, 255, 255]).count()
     }
 
     #[test]
@@ -182,7 +187,7 @@ mod tests {
     #[test]
     fn template_is_black_with_the_number_cut_out() {
         let px = render_styled(Some(7), true, Style::Template);
-        assert!(px.chunks_exact(4).all(|p| p[..3] == [0, 0, 0]), "only black: macOS uses just the alpha");
+        assert!(pixels(&px).iter().all(|p| p[..3] == [0, 0, 0]), "only black: macOS uses just the alpha");
         let centre = ((SIZE / 2 * SIZE + SIZE / 2) * 4) as usize;
         assert_eq!(px[centre + 3], 0, "the 7's stroke is a hole in the shape");
         let corner_inside = ((8 * SIZE + 12) * 4 + 3) as usize;
@@ -190,7 +195,7 @@ mod tests {
         assert_eq!(px[3], 0, "outside is transparent");
         for v in 0..=16u8 {
             let p = render_styled(Some(v), true, Style::Template);
-            let holes = p.chunks_exact(4).enumerate().filter(|(i, q)| {
+            let holes = pixels(&p).iter().enumerate().filter(|(i, q)| {
                 let (x, y) = ((*i as u32) % SIZE, (*i as u32) / SIZE);
                 q[3] == 0 && (16..48).contains(&x) && (16..48).contains(&y)
             });
@@ -202,7 +207,7 @@ mod tests {
     fn template_not_connected_is_dimmed() {
         let on = render_styled(Some(7), true, Style::Template);
         let off = render_styled(Some(7), false, Style::Template);
-        let max = |p: &[u8]| p.chunks_exact(4).map(|q| q[3]).max().unwrap();
+        let max = |p: &[u8]| pixels(p).iter().map(|q| q[3]).max().unwrap();
         assert_eq!(max(&on), 255);
         assert!(max(&off) < 130, "lighter when not connected");
         assert_eq!(off, render_styled(None, false, Style::Template), "and shows a dash, not a volume");

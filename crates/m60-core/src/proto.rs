@@ -318,7 +318,9 @@ pub fn decode_custom_eq(profile: &[u8]) -> Option<CustomEq> {
         return None;
     }
     let bands = profile[..head]
-        .chunks_exact(BAND_RECORD)
+        .as_chunks::<BAND_RECORD>()
+        .0
+        .iter()
         .map(|r| Band {
             index: r[0],
             zero: r[1],
