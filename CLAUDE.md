@@ -52,7 +52,9 @@ On Linux, a smoke run is `HOME=$(mktemp -d) timeout 8 xvfb-run -a ./target/debug
   - `version.rs`: version and build time (from `build.rs`).
 - `crates/m60-tray/ui`: plain HTML/CSS/JS, no bundler. `theme.css` holds the light and dark colours.
 - `crates/m60-tray/ui-tests`: Playwright tests for the three pages.
-- CI: `.github/workflows/ci.yml`. Some file-sync tools refuse paths under `.github`; if one does,
+- CI: `.github/workflows/ci.yml`. When every job passes on a push to `main`, the `release` job publishes
+  the Windows and macOS installers as release `v<version>` (from `[workspace.package]`). A version that
+  already has a release is skipped, so bumping the version is what makes a new release. Some file-sync tools refuse paths under `.github`; if one does,
   put the workflow in `packaging/github-ci.yml` and tell the user to move it.
 
 ## Decisions (and why)

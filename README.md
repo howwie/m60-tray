@@ -1,5 +1,8 @@
 # M60 Tray
 
+[![CI](https://github.com/howwie/m60-tray/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/howwie/m60-tray/actions/workflows/ci.yml?query=branch%3Amain)
+[![Latest release](https://img.shields.io/github/v/release/howwie/m60-tray)](https://github.com/howwie/m60-tray/releases/latest)
+
 A small system-tray app that controls **Edifier M60** speakers from Windows and macOS, so you do not
 need the phone app. It talks to the speaker over Bluetooth Low Energy using the protocol documented in
 [`docs/PROTOCOL.md`](docs/PROTOCOL.md) (reverse-engineered from the official app; unofficial and not
@@ -96,7 +99,13 @@ Not included on purpose: the HD/LDAC codec switch (it makes the speaker drop Blu
 
 ## Build and install
 
-You need Rust 1.89 or newer (`rustup update`) and, for installers, the Tauri CLI:
+Ready-made installers are on the [Releases](https://github.com/howwie/m60-tray/releases) page: an `.msi`
+and a setup `.exe` for Windows, and a `.dmg` for Macs with Apple silicon. CI publishes a release when a
+build of `main` passes with a version number that has no release yet. The installers are not signed with a
+paid certificate, so Windows SmartScreen may warn on first run ("More info" > "Run anyway"), and macOS may
+refuse to open the app until you allow it in System Settings > Privacy & Security ("Open Anyway").
+
+To build it yourself, you need Rust 1.89 or newer (`rustup update`) and, for installers, the Tauri CLI:
 
 ```sh
 cargo install tauri-cli --version "^2" --locked
@@ -148,7 +157,7 @@ crates/m60-tray          the Tauri app
   tauri.conf.json        Tauri configuration;  Info.plist: macOS additions
 docs/PROTOCOL.md         the protocol, with the evidence for each command
 packaging/               build scripts for installers
-.github/workflows        CI: fmt, clippy and tests on Linux, Windows and macOS, plus installers
+.github/workflows        CI: fmt, clippy and tests on Linux, Windows and macOS, plus installers and releases
 ```
 
 ## Development
